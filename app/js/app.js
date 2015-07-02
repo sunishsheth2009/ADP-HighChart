@@ -6,13 +6,13 @@
    .config(function($stateProvider, $urlRouterProvider) {
       $urlRouterProvider.otherwise("/");
       $stateProvider
-        .state('index', {
-          url: "",
-          templateUrl: "views/index.html"
+        .state('chart1', {
+          url: "/",
+          templateUrl: "views/chart1.html"
         })
-        .state('description', {
-          url: "/description",
-          templateUrl: "views/description.html"
+        .state('chart2', {
+          url: "",
+          templateUrl: "views/chart2.html"
         })
     });
 
