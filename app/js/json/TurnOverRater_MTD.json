@@ -1,0 +1,227 @@
+{
+  "reportOrChartCard": "C",
+  "itemID": "76",
+  "metricName": "Turnover Rate",
+  "dataRefreshedDate": "2015-07-01T22:13:00",
+  "currentValue": 0,
+  "chartTypeCodeValue": "LINE",
+  "parentKey": 76,
+  "metricTimeCode": {
+    "code": "Current_MTD",
+    "timePeriod": "MONTH"
+  },
+  "metricValues": {
+    "columns": [
+      {
+        "columnName": "Period",
+        "columnDataType": "PERIOD"
+      },
+      {
+        "columnName": "Overall Turnover %",
+        "columnDataType": "PERCENTAGE"
+      },
+      {
+        "columnName": "Voluntary Turnover %",
+        "columnDataType": "PERCENTAGE"
+      },
+      {
+        "columnName": "Involuntary Turnover %",
+        "columnDataType": "PERCENTAGE"
+      },
+      {
+        "columnName": "Overall Terminations",
+        "columnDataType": "NUMERIC"
+      },
+      {
+        "columnName": "Voluntary Terminations",
+        "columnDataType": "NUMERIC"
+      },
+      {
+        "columnName": "Involuntary Terminations",
+        "columnDataType": "NUMERIC"
+      },
+      {
+        "columnName": "Average Headcount",
+        "columnDataType": "NUMERIC2"
+      }
+    ],
+    "rows": [
+      [
+        "Jul-14",
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        15
+      ],
+      [
+        "Aug-14",
+        13.33,
+        6.67,
+        6.67,
+        2,
+        1,
+        1,
+        15
+      ],
+      [
+        "Sep-14",
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        15
+      ],
+      [
+        "Oct-14",
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        15
+      ],
+      [
+        "Nov-14",
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        15
+      ],
+      [
+        "Dec-14",
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        15
+      ],
+      [
+        "Jan-15",
+        1.43,
+        0,
+        1.43,
+        1,
+        0,
+        1,
+        70
+      ],
+      [
+        "Feb-15",
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        70
+      ],
+      [
+        "Mar-15",
+        2.94,
+        0,
+        2.94,
+        2,
+        0,
+        2,
+        68
+      ],
+      [
+        "Apr-15",
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        71
+      ],
+      [
+        "May-15",
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        71
+      ],
+      [
+        "Jun-15",
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        71
+      ],
+      [
+        "Jul-15",
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        71
+      ]
+    ]
+  },
+  "dataFormat": "PERCENTAGE",
+  "drillDwnFilter": "NAN",
+  "summary": {
+    "text": "Turnover Rate is {rate} in {period}. No change since {previousPeriod}.",
+    "bindings": [
+      {
+        "key": "rate",
+        "value": 0,
+        "type": "PERCENTAGE",
+        "surroundText": "<span class=\"summary-value\">{value}</span>"
+      },
+      {
+        "key": "period",
+        "value": "Jul-15",
+        "type": "PERIOD"
+      },
+      {
+        "key": "varianceDiff",
+        "value": 0,
+        "type": "PERCENTAGE",
+        "surroundText": "<span class=\"big neutral\">{value}</span>"
+      },
+      {
+        "key": "previousPeriod",
+        "value": "Jun-15",
+        "type": "PERIOD"
+      }
+    ]
+  },
+  "yaxisTitle": "Turnover %",
+  "dimension": 3,
+  "dataIndex": 0,
+  "displayOnlyTotal": false,
+  "viewBy": "VIEW_BY_TIME",
+  "benchmarkApplicable": false,
+  "benchmarkIcon": false,
+  "commentsCount": 0,
+  "thrshldTggleFlag": 1,
+  "benchmarkButtonFlag": false,
+  "domainCodeKey": 2,
+  "zoomApplicable": true,
+  "sortOption": "DEFAULT",
+  "bmInfoFlag": false,
+  "viewByLabel": "Time",
+  "bmPaidClient": false,
+  "xAxisSeriesLabel": "Current Month"
+}

@@ -4,8 +4,9 @@
         .module('myApp')
         .controller('DashBoardController', DashBoardController);
 
-    function DashBoardController() {
-        this.name = "Sunish";
+    DashBoardController.$inject = ['highChartDataService']
+    function DashBoardController(highChartDataService) {
+        this.name = "Lets display some graphs";
      }
 
  })();

@@ -1,0 +1,147 @@
+{
+  "reportOrChartCard": "C",
+  "itemID": "50",
+  "metricName": "Average Age",
+  "dataRefreshedDate": "2015-07-01T22:13:00",
+  "currentValue": 38.23,
+  "chartTypeCodeValue": "COLUMN",
+  "parentKey": 50,
+  "metricTimeCode": {
+    "code": "Current_YTD",
+    "timePeriod": "YEAR"
+  },
+  "metricValues": {
+    "columns": [
+      {
+        "columnName": "Period",
+        "columnDataType": "PERIOD"
+      },
+      {
+        "columnName": "Code",
+        "columnDataType": "TEXT"
+      },
+      {
+        "columnName": "Location",
+        "columnDataType": "TEXT"
+      },
+      {
+        "columnName": "Average Age",
+        "columnDataType": "NUMERIC2"
+      },
+      {
+        "columnName": "Headcount",
+        "columnDataType": "NUMERIC"
+      }
+    ],
+    "rows": [
+      [
+        "2015",
+        "CAN",
+        "Canada",
+        61.27,
+        3
+      ],
+      [
+        "2015",
+        "BRA",
+        "Brazil",
+        50.88,
+        3
+      ],
+      [
+        "2015",
+        "CHL",
+        "Chile",
+        49.51,
+        1
+      ],
+      [
+        "2015",
+        "QAT",
+        "Qatar",
+        45.5,
+        1
+      ],
+      [
+        "2015",
+        "ALB",
+        "Albania",
+        45.5,
+        1
+      ],
+      [
+        "2015",
+        "FRA",
+        "France",
+        38.73,
+        2
+      ],
+      [
+        "2015",
+        "USA",
+        "United States",
+        36.33,
+        53
+      ],
+      [
+        "2015",
+        "UNKNOWN",
+        "UNKNOWN",
+        32.28,
+        2
+      ],
+      [
+        "2015",
+        "GBR",
+        "United Kingdom",
+        31.28,
+        3
+      ]
+    ]
+  },
+  "dataFormat": "NUMERIC2",
+  "drillDwnFilter": "p_pCountry",
+  "summary": {
+    "text": "Average Age is {average} in {period}.",
+    "bindings": [
+      {
+        "key": "average",
+        "value": 38.23,
+        "type": "NUMERIC2",
+        "surroundText": "<span class=\"summary-value\">{value}</span>"
+      },
+      {
+        "key": "period",
+        "value": "2015",
+        "type": "PERIOD"
+      },
+      {
+        "key": "varianceDiff",
+        "value": 0,
+        "type": "NUMERIC",
+        "surroundText": "<span class=\"big neutral\">{value}</span>"
+      },
+      {
+        "key": "previousPeriod",
+        "type": "TEXT"
+      }
+    ]
+  },
+  "yaxisTitle": "Average Age",
+  "dimension": 1,
+  "dataIndex": 2,
+  "displayOnlyTotal": false,
+  "viewBy": "VIEW_BY_LOCATION",
+  "benchmarkApplicable": false,
+  "benchmarkIcon": false,
+  "commentsCount": 39,
+  "thrshldTggleFlag": 1,
+  "benchmarkButtonFlag": false,
+  "domainCodeKey": 2,
+  "zoomApplicable": true,
+  "sortOption": "DEFAULT",
+  "bmInfoFlag": false,
+  "viewByLabel": "Location",
+  "bmPaidClient": false,
+  "xAxisSeriesLabel": "Current Year"
+}
