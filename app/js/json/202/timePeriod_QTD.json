@@ -1,0 +1,102 @@
+{
+  "reportOrChartCard": "C",
+  "itemID": "202",
+  "metricName": "Overtime Cost",
+  "dataRefreshedDate": "2015-05-19T16:28:58",
+  "currentValue": 0,
+  "chartTypeCodeValue": "LINE",
+  "parentKey": 202,
+  "metricTimeCode": {
+    "code": "Current_QTD",
+    "timePeriod": "QUARTER"
+  },
+  "metricValues": {
+    "columns": [
+      {
+        "columnName": "Period",
+        "columnDataType": "PERIOD"
+      },
+      {
+        "columnName": "Overtime Cost",
+        "columnDataType": "CURRENCY"
+      },
+      {
+        "columnName": "Overtime Cost Percentage",
+        "columnDataType": "PERCENTAGE"
+      }
+    ],
+    "rows": [
+      [
+        "Q3-2014",
+        0,
+        0
+      ],
+      [
+        "Q4-2014",
+        0,
+        0
+      ],
+      [
+        "Q1-2015",
+        0,
+        0
+      ],
+      [
+        "Q2-2015",
+        0,
+        0
+      ],
+      [
+        "Q3-2015",
+        0,
+        0
+      ]
+    ]
+  },
+  "dataFormat": "CURRENCY",
+  "drillDwnFilter": "qtrFullName",
+  "summary": {
+    "text": "Overtime Cost is {value} in {period}. No change since {previousPeriod}.",
+    "bindings": [
+      {
+        "key": "value",
+        "value": 0,
+        "type": "CURRENCY",
+        "surroundText": "<span class=\"summary-value\">{value}</span>"
+      },
+      {
+        "key": "period",
+        "value": "Q3-2015",
+        "type": "PERIOD"
+      },
+      {
+        "key": "varianceDiff",
+        "value": 0,
+        "type": "CURRENCY",
+        "surroundText": "<span class=\"big neutral\">{value}</span>"
+      },
+      {
+        "key": "previousPeriod",
+        "value": "Q2-2015",
+        "type": "PERIOD"
+      }
+    ]
+  },
+  "yaxisTitle": "Overtime cost",
+  "dimension": 1,
+  "dataIndex": 0,
+  "displayOnlyTotal": false,
+  "viewBy": "VIEW_BY_TIME",
+  "benchmarkApplicable": false,
+  "benchmarkIcon": false,
+  "commentsCount": 0,
+  "thrshldTggleFlag": 1,
+  "benchmarkButtonFlag": false,
+  "domainCodeKey": 3,
+  "zoomApplicable": true,
+  "sortOption": "DEFAULT",
+  "bmInfoFlag": false,
+  "viewByLabel": "Time",
+  "bmPaidClient": false,
+  "xAxisSeriesLabel": "Current Quarter"
+}

@@ -14,6 +14,14 @@
           url: "",
           templateUrl: "views/chart2.html"
         })
+        .state('chart3', {
+          url: "",
+          templateUrl: "views/chart3.html"
+        })
+        .state('chart4', {
+          url: "",
+          templateUrl: "views/chart4.html"
+        })
     });
 
 })();

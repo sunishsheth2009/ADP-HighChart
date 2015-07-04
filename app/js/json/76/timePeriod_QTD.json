@@ -1,0 +1,147 @@
+{
+  "reportOrChartCard": "C",
+  "itemID": "76",
+  "metricName": "Turnover Rate",
+  "dataRefreshedDate": "2015-07-01T22:13:00",
+  "currentValue": 0,
+  "chartTypeCodeValue": "LINE",
+  "parentKey": 76,
+  "metricTimeCode": {
+    "code": "Current_QTD",
+    "timePeriod": "QUARTER"
+  },
+  "metricValues": {
+    "columns": [
+      {
+        "columnName": "Period",
+        "columnDataType": "PERIOD"
+      },
+      {
+        "columnName": "Overall Turnover %",
+        "columnDataType": "PERCENTAGE"
+      },
+      {
+        "columnName": "Voluntary Turnover %",
+        "columnDataType": "PERCENTAGE"
+      },
+      {
+        "columnName": "Involuntary Turnover %",
+        "columnDataType": "PERCENTAGE"
+      },
+      {
+        "columnName": "Overall Terminations",
+        "columnDataType": "NUMERIC"
+      },
+      {
+        "columnName": "Voluntary Terminations",
+        "columnDataType": "NUMERIC"
+      },
+      {
+        "columnName": "Involuntary Terminations",
+        "columnDataType": "NUMERIC"
+      },
+      {
+        "columnName": "Average Headcount",
+        "columnDataType": "NUMERIC2"
+      }
+    ],
+    "rows": [
+      [
+        "Q3-2014",
+        13.33,
+        6.67,
+        6.67,
+        2,
+        1,
+        1,
+        15
+      ],
+      [
+        "Q4-2014",
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        15
+      ],
+      [
+        "Q1-2015",
+        4.33,
+        0,
+        4.33,
+        3,
+        0,
+        3,
+        69.33
+      ],
+      [
+        "Q2-2015",
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        71
+      ],
+      [
+        "Q3-2015",
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        71
+      ]
+    ]
+  },
+  "dataFormat": "PERCENTAGE",
+  "drillDwnFilter": "qtrFullName",
+  "summary": {
+    "text": "Turnover Rate is {rate} in {period}. No change since {previousPeriod}.",
+    "bindings": [
+      {
+        "key": "rate",
+        "value": 0,
+        "type": "PERCENTAGE",
+        "surroundText": "<span class=\"summary-value\">{value}</span>"
+      },
+      {
+        "key": "period",
+        "value": "Q3-2015",
+        "type": "PERIOD"
+      },
+      {
+        "key": "varianceDiff",
+        "value": 0,
+        "type": "PERCENTAGE",
+        "surroundText": "<span class=\"big neutral\">{value}</span>"
+      },
+      {
+        "key": "previousPeriod",
+        "value": "Q2-2015",
+        "type": "PERIOD"
+      }
+    ]
+  },
+  "yaxisTitle": "Turnover %",
+  "dimension": 3,
+  "dataIndex": 0,
+  "displayOnlyTotal": false,
+  "viewBy": "VIEW_BY_TIME",
+  "benchmarkApplicable": false,
+  "benchmarkIcon": false,
+  "commentsCount": 0,
+  "thrshldTggleFlag": 1,
+  "benchmarkButtonFlag": false,
+  "domainCodeKey": 2,
+  "zoomApplicable": true,
+  "sortOption": "DEFAULT",
+  "bmInfoFlag": false,
+  "viewByLabel": "Time",
+  "bmPaidClient": false,
+  "xAxisSeriesLabel": "Current Quarter"
+}

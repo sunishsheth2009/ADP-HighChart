@@ -1,0 +1,137 @@
+{
+  "reportOrChartCard": "C",
+  "itemID": "76",
+  "metricName": "Turnover Rate",
+  "dataRefreshedDate": "2015-07-01T22:13:00",
+  "currentValue": 4.27,
+  "chartTypeCodeValue": "LINE",
+  "parentKey": 76,
+  "metricTimeCode": {
+    "code": "Current_YTD",
+    "timePeriod": "YEAR"
+  },
+  "metricValues": {
+    "columns": [
+      {
+        "columnName": "Period",
+        "columnDataType": "PERIOD"
+      },
+      {
+        "columnName": "Overall Turnover %",
+        "columnDataType": "PERCENTAGE"
+      },
+      {
+        "columnName": "Voluntary Turnover %",
+        "columnDataType": "PERCENTAGE"
+      },
+      {
+        "columnName": "Involuntary Turnover %",
+        "columnDataType": "PERCENTAGE"
+      },
+      {
+        "columnName": "Overall Terminations",
+        "columnDataType": "NUMERIC"
+      },
+      {
+        "columnName": "Voluntary Terminations",
+        "columnDataType": "NUMERIC"
+      },
+      {
+        "columnName": "Involuntary Terminations",
+        "columnDataType": "NUMERIC"
+      },
+      {
+        "columnName": "Average Headcount",
+        "columnDataType": "NUMERIC2"
+      }
+    ],
+    "rows": [
+      [
+        "2012",
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        "2013",
+        28.57,
+        28.57,
+        0,
+        1,
+        1,
+        0,
+        3.5
+      ],
+      [
+        "2014",
+        15.59,
+        7.79,
+        7.79,
+        2,
+        1,
+        1,
+        12.83
+      ],
+      [
+        "2015",
+        4.27,
+        0,
+        4.27,
+        3,
+        0,
+        3,
+        70.29
+      ]
+    ]
+  },
+  "dataFormat": "PERCENTAGE",
+  "drillDwnFilter": "year",
+  "summary": {
+    "text": "Turnover Rate is {rate} in {period}. {varianceDiff} since {previousPeriod}.",
+    "bindings": [
+      {
+        "key": "rate",
+        "value": 4.27,
+        "type": "PERCENTAGE",
+        "surroundText": "<span class=\"summary-value\">{value}</span>"
+      },
+      {
+        "key": "period",
+        "value": "2015",
+        "type": "PERIOD"
+      },
+      {
+        "key": "varianceDiff",
+        "value": 11.32,
+        "type": "PERCENTAGE",
+        "surroundText": "<span class=\"big neg-down\">{value}</span>"
+      },
+      {
+        "key": "previousPeriod",
+        "value": "2014",
+        "type": "PERIOD"
+      }
+    ]
+  },
+  "yaxisTitle": "Turnover %",
+  "dimension": 3,
+  "dataIndex": 0,
+  "displayOnlyTotal": false,
+  "viewBy": "VIEW_BY_TIME",
+  "benchmarkApplicable": false,
+  "benchmarkIcon": false,
+  "commentsCount": 0,
+  "thrshldTggleFlag": 1,
+  "benchmarkButtonFlag": false,
+  "domainCodeKey": 2,
+  "zoomApplicable": true,
+  "sortOption": "DEFAULT",
+  "bmInfoFlag": false,
+  "viewByLabel": "Time",
+  "bmPaidClient": false,
+  "xAxisSeriesLabel": "Current Year"
+}

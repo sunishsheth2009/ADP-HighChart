@@ -9,7 +9,7 @@
     var directive = {
       restrict: 'EA',
       templateUrl: 'views/directiveTemplates/chart.html',
-      scope: true,
+      scope: {},
       link: linkFunc,
       controller: chartDirectiveController,
       controllerAs: 'vm',
@@ -19,8 +19,8 @@
     return directive;
 
     function linkFunc(scope, element, attribute, controller) {
-      controller.init(attribute.mectricid);
-      scope.mectricId = attribute.mectricid;
+      var elementResult = element[0].getElementsByClassName('container');
+      controller.init(elementResult, attribute.mectricid, attribute.original, attribute.drilldownto, attribute.drilldownidindex, attribute.drilldownvalueindex);
     }
   }
 
@@ -29,9 +29,13 @@
   function chartDirectiveController($scope, highChartDataService) {
     var vm = this;
 
-    vm.init =  function(mectricId) {
-      // var myEl = angular.element(document.querySelector( '#some-id' ));
+    vm.init =  function(elementResult, mectricId, originalGraph, drillDownGraph, drillDownIdIndex, drillDownValueIndex) {
+      vm.elementResult = elementResult;
       vm.mectricId = mectricId;
+      vm.originalGraph = originalGraph;
+      vm.drillDownGraph = drillDownGraph;
+      vm.drillDownIdIndex = drillDownIdIndex;
+      vm.drillDownValueIndex = drillDownValueIndex;
       vm.dataMTD = [];
       vm.dataQTD = [];
       vm.dataYTD = [];
@@ -42,6 +46,7 @@
       highChartDataService.getData(urlMTD)
       .then(function(response){
         vm.dataMTD = response;
+        // vm.displayGraph(elementResult, vm.dataMTD, vm.dataMTD, vm.dataMTD, vm.originalGraph, vm.drillDownGraph, vm.drillDownIdIndex, vm.drillDownValueIndex);
       }).catch(function(error){
         console.log("Error!!");
       });
@@ -56,132 +61,121 @@
       highChartDataService.getData(urlYTD)
       .then(function(response){
         vm.dataYTD = response;
+        // vm.displayGraph(elementResult, vm.dataYTD, vm.dataYTD, vm.dataYTD, vm.originalGraph, vm.drillDownGraph, vm.drillDownIdIndex, vm.drillDownValueIndex);
       }).catch(function(error){
         console.log("Error!!");
       });
 
       $scope.$evalAsync(
         function( $scope ) {
-          $scope.$watchGroup(['vm.dataYTD', 'vm.dataQTD', 'vm.dataMTD'], function(newValues, oldValues, scope) {
-            vm.displayGraph(vm.dataMTD, vm.dataQTD, vm.dataYTD);
+          $scope.$watchGroup(['vm.dataMTD', 'vm.dataQTD', 'vm.dataYTD'], function(newValues, oldValues, scope) {
+            vm.displayGraph(elementResult, vm.dataMTD, vm.dataQTD, vm.dataYTD, vm.originalGraph, vm.drillDownGraph, vm.drillDownIdIndex, vm.drillDownValueIndex);
           });
         }
       );
     }
 
-    vm.displayGraph =  function(dataMTD, dataQTD, dataYTD) {
-      $('.container').each(function() {
-        $(this).highcharts({
-          chart: {
-            type: 'pie'
-          },
+    vm.displayGraph =  function(elementResult, dataMTD, dataQTD, dataYTD, originalGraph, drillDownGraph, drillDownIdIndex, drillDownValueIndex) {
+      $(elementResult).highcharts({
+        chart: {
+          type: drillDownGraph
+          // options3d: {
+          //   enabled: true,
+          //   alpha: 45,
+          //   beta: 20
+          // }
+        },
 
-          credits: {
-            text: 'ADP',
-            href: 'http://www.adp.com'
-          },
+        exporting: {
+          enabled: true
+        },
 
+        credits: {
+          text: 'ADP',
+          href: 'http://www.adp.com'
+        },
+
+        title: {
+          text: dataMTD.metricName
+        },
+
+        xAxis: {
           title: {
-            text: dataMTD.metricName
-          },
-
-          xAxis: {
-            title: {
-              enabled: true,
-              text: dataMTD.xAxisSeriesLabel,
-              style: {
-                fontWeight: 'normal'
-              }
-            },
-            categories: highChartDataService.convertAdapter(dataMTD.metricValues.rows, 2)
-          },
-
-          tooltip: {
-            shared: true,
-            useHTML: true,
-            headerFormat: '<small>{point.key}</small><table>',
-            pointFormat: '<tr><td style="color: {series.color}">{series.name}: </td> <td style="text-align: right"><b>{point.y}</b></td></tr>',
-            footerFormat: '</table>',
-            valueDecimals: 2
-          },
-
-          yAxis: {
-            title: {
-              enabled: true,
-              text: dataMTD.yaxisTitle,
-              style: {
-                fontWeight: 'normal'
-              }
+            enabled: true,
+            style: {
+              fontWeight: 'normal'
             }
           },
+          type: 'category'
+        },
 
-          plotOptions: {
-            series: {
-              animation: {
-                duration: 2000,
-                easing: 'easeOutBounce'
-              }
+        tooltip: {
+          shared: true,
+          useHTML: true,
+          headerFormat: '<small>{series.name}</small><table>',
+          pointFormat: '<tr><td style="color: {point.color}">{point.name}: </td> <td style="text-align: right"><b>{point.y}</b></td></tr>',
+          footerFormat: '</table>',
+          valueDecimals: 2
+        },
+
+        yAxis: {
+          title: {
+            enabled: true,
+            text: dataMTD.yaxisTitle,
+            style: {
+              fontWeight: 'normal'
             }
-          },
-
-
-          series: [{
-            name: 'Things',
-            colorByPoint: true,
-            data: [{
-              name: 'Animals',
-              y: 5,
-              drilldown: 'animals'
-            }, {
-              name: 'Fruits',
-              y: 2,
-              drilldown: 'fruits'
-            }, {
-              name: 'Cars',
-              y: 4,
-              drilldown: 'cars'
-            }],
-            type: 'column'
-          }],
-          drilldown: {
-            series: [{
-              id: 'animals',
-              data: [
-                ['Cats', 4],
-                ['Dogs', 2],
-                ['Cows', 1],
-                ['Sheep', 2],
-                ['Pigs', 1]
-              ]
-            }, {
-              id: 'fruits',
-              data: [
-                ['Apples', 4],
-                ['Oranges', 2]
-              ]
-            }, {
-              id: 'cars',
-              data: [
-                ['Toyota', 4],
-                ['Opel', 2],
-                ['Volkswagen', 2]
-              ]
-            }]
           }
+        },
 
-          // series: [
-          //   {
-          //     name: data.yaxisTitle,
-          //     data: highChartDataService.convertAdapter(data.metricValues.rows, 3),
-          //     type: data.chartTypeCodeValue.toLowerCase()
-          //   },
-          //   {
-          //     name: data.metricValues.columns[4].columnName,
-          //     data: highChartDataService.convertAdapter(data.metricValues.rows, 4),
-          //     // type: data.chartTypeCodeValue.toLowerCase()
-          //   }
-          // ]
-        });
+        plotOptions: {
+          series: {
+            animation: {
+              duration: 2000,
+              easing: 'easeOutBounce'
+            }
+          },
+          pie: {
+            innerSize: 100,
+            depth: 45
+          }
+        },
+
+
+        series: [{
+          name: dataMTD.metricValues.columns[0].columnName,
+          colorByPoint: true,
+          data: [{
+            name: 'Month',
+            y: dataMTD.summary.bindings[0].value,
+            drilldown: 'month'
+          }, {
+            name: 'Quarter',
+            y: dataQTD.summary.bindings[0].value,
+            drilldown: 'quarter'
+          }, {
+            name: 'Year',
+            y: dataYTD.summary.bindings[0].value,
+            drilldown: 'year'
+          }],
+          type: originalGraph
+        }],
+        drilldown: {
+          series: [{
+            name: dataMTD.metricValues.columns[drillDownIdIndex].columnName,
+            id: 'month',
+            data: highChartDataService.convertAdapter(dataMTD.metricValues.rows, drillDownIdIndex, drillDownValueIndex)
+          }, {
+            name: dataMTD.metricValues.columns[drillDownIdIndex].columnName,
+            id: 'quarter',
+            data: highChartDataService.convertAdapter(dataQTD.metricValues.rows, drillDownIdIndex, drillDownValueIndex)
+          }, {
+            name: dataMTD.metricValues.columns[drillDownIdIndex].columnName,
+            id: 'year',
+            data: highChartDataService.convertAdapter(dataYTD.metricValues.rows, drillDownIdIndex, drillDownValueIndex)
+          }]
+        }
+      },function(chart){
       });
     }
 
