@@ -16,20 +16,22 @@
     return service;
 
     function getData(url) {
-      var settings = {
-        "async": true,
-        "url": "http://51.16.66.147:9084/adpi/data-services/metrics/50/large?timePeriod=Current_MTD",
-        "method": "GET",
-        "headers": {
-          "orgoid": "05NSVSS5ZNR00F6N",
-          "accept": "application/json",
-          "rolecode": "Manager",
-          "associateoid": "G3CRD5MV1KJV3NMT"
-        }
-      };
-      $.ajax(settings).done(function (response) {
-        console.log(response);
-      });
+      // var settings = {
+      //   "async": true,
+      //   "url": "http://51.16.66.147:9084/adpi/data-services/metrics/50/large?timePeriod=Current_MTD",
+      //   "method": "GET",
+      //   "jsonp": "callback",
+      //   "dataType":"jsonp",
+      //   "headers": {
+      //     "orgoid": "05NSVSS5ZNR00F6N",
+      //     "accept": "application/json",
+      //     "rolecode": "Manager",
+      //     "associateoid": "G3CRD5MV1KJV3NMT"
+      //   }
+      // };
+      // $.ajax(settings).done(function (response) {
+      //   console.log(response);
+      // });
 
       var myDataDeferred;
       if(myDataDeferred) {
