@@ -141,6 +141,9 @@
             }
           },
           pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            sliced: true,
             innerSize: 100,
             depth: 45
           }
