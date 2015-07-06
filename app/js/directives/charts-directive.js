@@ -83,7 +83,10 @@
     var displayGraph =  function(elementResult, dataMTD, dataQTD, dataYTD, originalGraph, drillDownGraph, drillDownIdIndex, drillDownValueIndex) {
       $(elementResult).highcharts({
         chart: {
-          type: drillDownGraph
+          type: drillDownGraph,
+          zoomType: 'x',
+          panning: true,
+          panKey: 'shift'
           // options3d: {
           //   enabled: true,
           //   alpha: 45,
@@ -137,11 +140,14 @@
           series: {
             animation: {
               duration: 2000,
-              easing: 'easeOutBounce'
+              easing: 'easeOutBounce',
+              shadow: true
             }
           },
           pie: {
+            showInLegend: true,
             allowPointSelect: true,
+            slicedOffset: 20,
             cursor: 'pointer',
             sliced: true,
             innerSize: 100,

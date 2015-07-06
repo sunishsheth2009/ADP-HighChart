@@ -58,5 +58,10 @@
       }
       return JSON.parse(JSON.stringify(array));
     }
+
+    // function convertForToolTip(){
+    //
+    // }
+
   }
 })();
