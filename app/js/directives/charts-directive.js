@@ -28,9 +28,6 @@
 
   function chartDirectiveController($scope, highChartDataService, $q) {
     var vm = this;
-    vm.dataMTD = [];
-    vm.dataQTD = [];
-    vm.dataYTD = [];
 
     vm.init =  function(elementResult, mectricId, originalGraph, drillDownGraph, drillDownIdIndex, drillDownValueIndex) {
       vm.elementResult = elementResult;
@@ -51,10 +48,10 @@
       data2 = highChartDataService.getData(urlQTD),
       data3 = highChartDataService.getData(urlYTD);
       $q.all([data1, data2,data3]).then(function(arrayOfResults) {
-        vm.dataMTD = arrayOfResults[0];
-        vm.dataQTD = arrayOfResults[1];
-        vm.dataYTD = arrayOfResults[2];
-        displayGraph(vm.elementResult, vm.dataMTD, vm.dataQTD, vm.dataYTD, vm.originalGraph, vm.drillDownGraph, vm.drillDownIdIndex, vm.drillDownValueIndex);
+        var dataMTD = arrayOfResults[0];
+        var dataQTD = arrayOfResults[1];
+        var dataYTD = arrayOfResults[2];
+        displayGraph(vm.elementResult, dataMTD, dataQTD, dataYTD, vm.originalGraph, vm.drillDownGraph, vm.drillDownIdIndex, vm.drillDownValueIndex);
       });
     }
 
@@ -122,13 +119,6 @@
               shadow: true
             },
             cursor: 'pointer'
-            // point: {
-            //   events: {
-            //     click: function () {
-            //       drillUp();
-            //     }
-            //   }
-            // }
           },
           pie: {
             showInLegend: true,
