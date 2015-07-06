@@ -24,9 +24,9 @@
     }
   }
 
-  chartDirectiveController.$inject = ['$scope','highChartDataService'];
+  chartDirectiveController.$inject = ['$scope','highChartDataService', '$q'];
 
-  function chartDirectiveController($scope, highChartDataService) {
+  function chartDirectiveController($scope, highChartDataService, $q) {
     var vm = this;
     vm.dataMTD = [];
     vm.dataQTD = [];
@@ -44,40 +44,18 @@
       var urlYTD = 'js/json/'+vm.mectricId+'/timePeriod_YTD'+'.json';
 
       fetchData(urlMTD, urlQTD, urlYTD);
-      callDisplayGraph();
     }
 
     var fetchData = function(urlMTD, urlQTD, urlYTD){
-      highChartDataService.getData(urlMTD)
-      .then(function(response){
-        vm.dataMTD = response;
-      }).catch(function(error){
-        console.log("Error!!");
+      var data1 = highChartDataService.getData(urlMTD),
+      data2 = highChartDataService.getData(urlQTD),
+      data3 = highChartDataService.getData(urlYTD);
+      $q.all([data1, data2,data3]).then(function(arrayOfResults) {
+        vm.dataMTD = arrayOfResults[0];
+        vm.dataQTD = arrayOfResults[1];
+        vm.dataYTD = arrayOfResults[2];
+        displayGraph(vm.elementResult, vm.dataMTD, vm.dataQTD, vm.dataYTD, vm.originalGraph, vm.drillDownGraph, vm.drillDownIdIndex, vm.drillDownValueIndex);
       });
-
-      highChartDataService.getData(urlQTD)
-      .then(function(response){
-        vm.dataQTD = response;
-      }).catch(function(error){
-        console.log("Error!!");
-      });
-
-      highChartDataService.getData(urlYTD)
-      .then(function(response){
-        vm.dataYTD = response;
-      }).catch(function(error){
-        console.log("Error!!");
-      });
-    }
-
-    var callDisplayGraph = function(){
-      $scope.$evalAsync(
-        function( $scope ) {
-          $scope.$watchGroup(['vm.dataMTD', 'vm.dataQTD', 'vm.dataYTD'], function(newValues, oldValues, scope) {
-            displayGraph(vm.elementResult, vm.dataMTD, vm.dataQTD, vm.dataYTD, vm.originalGraph, vm.drillDownGraph, vm.drillDownIdIndex, vm.drillDownValueIndex);
-          });
-        }
-      );
     }
 
     var displayGraph =  function(elementResult, dataMTD, dataQTD, dataYTD, originalGraph, drillDownGraph, drillDownIdIndex, drillDownValueIndex) {
@@ -142,7 +120,15 @@
               duration: 2000,
               easing: 'easeOutBounce',
               shadow: true
-            }
+            },
+            cursor: 'pointer'
+            // point: {
+            //   events: {
+            //     click: function () {
+            //       drillUp();
+            //     }
+            //   }
+            // }
           },
           pie: {
             showInLegend: true,
