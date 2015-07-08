@@ -28,8 +28,9 @@
 
   function chartDirectiveController($scope, highChartDataService, $q) {
     var vm = this;
+    vm.init = init;
 
-    vm.init =  function(elementResult, mectricId, originalGraph, drillDownGraph, drillDownIdIndex, drillDownValueIndex) {
+    function init(elementResult, mectricId, originalGraph, drillDownGraph, drillDownIdIndex, drillDownValueIndex) {
       vm.elementResult = elementResult;
       vm.mectricId = mectricId;
       vm.originalGraph = originalGraph;
@@ -43,7 +44,7 @@
       fetchData(urlMTD, urlQTD, urlYTD);
     }
 
-    var fetchData = function(urlMTD, urlQTD, urlYTD){
+    function fetchData(urlMTD, urlQTD, urlYTD){
       var data1 = highChartDataService.getData(urlMTD),
       data2 = highChartDataService.getData(urlQTD),
       data3 = highChartDataService.getData(urlYTD);
@@ -55,7 +56,7 @@
       });
     }
 
-    var displayGraph =  function(elementResult, dataMTD, dataQTD, dataYTD, originalGraph, drillDownGraph, drillDownIdIndex, drillDownValueIndex) {
+    function displayGraph(elementResult, dataMTD, dataQTD, dataYTD, originalGraph, drillDownGraph, drillDownIdIndex, drillDownValueIndex) {
       $(elementResult).highcharts({
         chart: {
           type: drillDownGraph,
@@ -71,6 +72,11 @@
 
         exporting: {
           enabled: true
+        },
+
+        legend: {
+          borderRadius: 5,
+          borderWidth: 1
         },
 
         credits: {
